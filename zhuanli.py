@@ -199,30 +199,6 @@ if st.button("预测吞咽障碍风险", use_container_width=True):
         except Exception as e:
             st.error(f"生成解释时出错: {str(e)}")
 
-# 显示输入数据
-st.markdown("---")
-if st.checkbox("显示输入数据详情"):
-    st.subheader("输入数据详情")
-    # 创建更易读的显示
-    display_df = input_df.copy()
-
-    # 重命名列
-    display_df.columns = [
-        '性别', '年龄', 'GCS评分', '中性粒细胞(%)', '红细胞', '凝血酶时间',
-        '碱性磷酸酶', '甘油三酯', '高密度脂蛋白', '镁', '磷',
-        '种族', '吸烟', '急性肾损伤', '白血病', '糖尿病',
-        '心力衰竭', '截瘫', '恶性肿瘤', '肾脏替代治疗'
-    ]
-
-    # 转换分类变量
-    display_df['性别'] = display_df['性别'].replace({0: '女', 1: '男'})
-    display_df['种族'] = display_df['种族'].replace({1: '白人', 2: '黑人', 3: '亚裔', 4: '其他'})
-
-    # 转换二元变量
-    binary_cols = ['吸烟', '急性肾损伤', '白血病', '糖尿病', '心力衰竭', '截瘫', '恶性肿瘤', '肾脏替代治疗']
-    display_df[binary_cols] = display_df[binary_cols].replace({0: '否', 1: '是'})
-
-    st.dataframe(display_df.style.highlight_max(axis=0, color='#fffd75'))
 
 # 添加页脚
 st.markdown("---")
