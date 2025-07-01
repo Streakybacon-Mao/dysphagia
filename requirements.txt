@@ -1,5 +1,5 @@
 streamlit==1.44.0
-catboost==1.2.7
+catboost==1.2.8
 pandas==2.2.3
 anyio==4.8.0
 argon2-cffi==23.1.0
